@@ -9,26 +9,7 @@ def solution(S, P, Q):
     :param Q: Non-empty array of M integers
     :return: Array of miniminal impact values between positions P[K] and Q[K]
     """
-    N = len(P)
-    min_impact = [0] * N
-
-    for i in range(N):
-
-        sub = S[P[i]:Q[i]]
-
-        if not sub:
-            sub = S[P[i]]
-
-        if 'A' in sub:
-            min_impact[i] = 1
-        elif 'C' in sub:
-            min_impact[i] = 2
-        elif 'G' in sub:
-            min_impact[i] = 3
-        elif 'T' in sub:
-            min_impact[i] = 4
-
-    return min_impact
+    pass
 
 
 """
