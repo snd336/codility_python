@@ -1,22 +1,57 @@
 def solution(S, P, Q):
     """
-    Impact Factors: A:1, C:2, G:3, T:4
-    Given a DNA sequence, and two positions, find min impact factor.
-
-
     :param S: Non-empty string of N characters
     :param P: Non-empty array of M integers
     :param Q: Non-empty array of M integers
     :return: Array of miniminal impact values between positions P[K] and Q[K]
     """
 
-    pass
+    prefixA = [0]
+    prefixC = [0]
+    prefixG = [0]
+    for i, j in enumerate(S):
+        A, C, G = 0, 0, 0
+        if j == 'A':
+            A = 1
+        elif j == 'C':
+            C = 1
+        elif j == 'G':
+            G = 1
+        prefixA.append(prefixA[-1] + A)
+        prefixC.append(prefixC[-1] + C)
+        prefixG.append(prefixG[-1] + G)
+
+    query_results = []
+
+    for i in range(len(Q)):
+        l, r = P[i]+1, Q[i]+1
+        if prefixA[r]-prefixA[l-1]:
+            query_results.append(1)
+        elif prefixC[r]-prefixC[l-1]:
+            query_results.append(2)
+        elif prefixG[r]-prefixG[l-1]:
+            query_results.append(3)
+        else:
+            query_results.append(4)
+
+    return query_results
 
 
-"""
-A DNA sequence can be represented as a string consisting of the letters A, C, G and T, which correspond to the types of successive nucleotides in the sequence. Each nucleotide has an impact factor, which is an integer. Nucleotides of types A, C, G and T have impact factors of 1, 2, 3 and 4, respectively. You are going to answer several queries of the form: What is the minimal impact factor of nucleotides contained in a particular part of the given DNA sequence?
+if __name__ == "__main__":
 
-The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N-1] consisting of N characters. There are M queries, which are given in non-empty arrays P and Q, each consisting of M integers. The K-th query (0 ≤ K < M) requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] and Q[K] (inclusive).
+    DNA = 'GGGGGGGGGGGGGGGGGG'
+    print(solution(DNA, [0], [10]))
+
+"""A DNA sequence can be represented as a string consisting of the letters A, C, G and T, which correspond to the 
+types of successive nucleotides in the sequence. Each nucleotide has an impact factor, which is an integer. 
+Nucleotides of types A, C, G and T have impact factors of 1, 2, 3 and 4, respectively. You are going to answer 
+several queries of the form: What is the minimal impact factor of nucleotides contained in a particular part of the 
+given DNA sequence?
+
+The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N-1] consisting of N characters. There are M 
+queries, which are given in non-empty arrays P and Q, each consisting of M integers. The K-th query (0 ≤ K < M) 
+requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] 
+and Q[K] (inclusive).
 
 For example, consider string S = CAGCCTA and arrays P, Q such that:
 
@@ -25,14 +60,15 @@ For example, consider string S = CAGCCTA and arrays P, Q such that:
     P[2] = 0    Q[2] = 6
 The answers to these M = 3 queries are as follows:
 
-The part of the DNA between positions 2 and 4 contains nucleotides G and C (twice), whose impact factors are 3 and 2 respectively, so the answer is 2.
-The part between positions 5 and 5 contains a single nucleotide T, whose impact factor is 4, so the answer is 4.
-The part between positions 0 and 6 (the whole string) contains all nucleotides, in particular nucleotide A whose impact factor is 1, so the answer is 1.
-Write a function:
+The part of the DNA between positions 2 and 4 contains nucleotides G and C (twice), whose impact factors are 3 and 2 
+respectively, so the answer is 2. The part between positions 5 and 5 contains a single nucleotide T, whose impact 
+factor is 4, so the answer is 4. The part between positions 0 and 6 (the whole string) contains all nucleotides, 
+in particular nucleotide A whose impact factor is 1, so the answer is 1. Write a function:
 
 def solution(S, P, Q)
 
-that, given a non-empty string S consisting of N characters and two non-empty arrays P and Q consisting of M integers, returns an array consisting of M integers specifying the consecutive answers to all queries.
+that, given a non-empty string S consisting of N characters and two non-empty arrays P and Q consisting of M 
+integers, returns an array consisting of M integers specifying the consecutive answers to all queries.
 
 Result array should be returned as an array of integers.
 
