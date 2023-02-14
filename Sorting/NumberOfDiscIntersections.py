@@ -1,28 +1,7 @@
-MAX_RESULT = 10 ** 7
 
 def solution(A):
-    n = len(A)
-    starts = [0] * n
-    ends = [0] * n
 
-    # prepare helper arrays
-    for i, r in enumerate(A):
-        starts[max(i - r, 0)] += 1
-        ends[min(i + r, n - 1)] += 1
-
-    active = 0
-    intersections = 0
-
-    # sweep away!
-    for i, r in enumerate(A):
-        started = starts[i]
-        ended = ends[i]
-        current = active * started + (started * (started - 1) // 2)
-        intersections += current
-        if intersections > MAX_RESULT:
-            return -1
-        active += started - ended
-    return intersections
+    pass
 """
 We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
 
