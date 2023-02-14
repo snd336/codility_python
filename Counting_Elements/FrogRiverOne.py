@@ -1,4 +1,4 @@
-# O(N) Complexity
+# O(N) Time Complexity
 def solution(X, A):
     """
     Finding the earliest time a frog can cross a river.

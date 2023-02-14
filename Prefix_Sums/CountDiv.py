@@ -1,4 +1,4 @@
-# O(1) Complexity
+# O(1) Time Complexity
 def solution(A, B, K):
     """
     A function that computer all i s.t. { i : A ≤ i ≤ B, i mod K = 0 }.

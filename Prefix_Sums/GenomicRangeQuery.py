@@ -1,3 +1,4 @@
+# O(N+M) Time Complexity
 def solution(S, P, Q):
     """
     :param S: Non-empty string of N characters

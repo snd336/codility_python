@@ -1,5 +1,5 @@
 
-# O(N) Complexity
+# O(N) Time Complexity
 def solution(A):
     """
     Find the missing element of a permutation

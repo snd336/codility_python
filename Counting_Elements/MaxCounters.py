@@ -1,4 +1,4 @@
-# O(N + M) Complexity
+# O(N + M) Time Complexity
 def solution(N, A):
     """
     You are given N counters, initially set to 0, and you have two possible operations on them:
@@ -69,7 +69,8 @@ Write a function:
 
 def solution(N, A)
 
-that, given an integer N and a non-empty array A consisting of M integers, returns a sequence of integers representing the values of the counters.
+that, given an integer N and a non-empty array A consisting of M integers, returns a sequence of integers 
+representing the values of the counters.
 
 Result array should be returned as an array of integers.
 

@@ -1,4 +1,4 @@
-# O(N) or O(N*log(N)) Complexity
+# O(N) or O(N*log(N)) Time Complexity
 def solution(A):
     """
     Given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A

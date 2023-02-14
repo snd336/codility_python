@@ -1,4 +1,4 @@
-# O(1) Complexity
+# O(1) Time Complexity
 def solution(X, Y, D):
     """
     Calculate minimal number of hops

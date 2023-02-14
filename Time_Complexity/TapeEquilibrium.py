@@ -1,4 +1,4 @@
-# O(N) Complexity
+# O(N) Time Complexity
 def solution(A):
     """
     Split a tape and find minimal difference.
