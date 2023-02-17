@@ -1,7 +1,28 @@
-
+# O(N) Time_Complexity
 def solution(A):
 
-    pass
+    open_disc = [0]*len(A)
+    close_disc = [0]*len(A)
+    for j, x in enumerate(A):
+
+        open_disc[max(j-x,0)] += 1 # from 0 to N-1, how many were at least already opened or open at each index
+        close_disc[min(j+x,len(A)-1)] += 1 # from 0 to N-1, how many close or left open at the end of N-1
+
+    disc_intersections = 0
+    current = 0
+    for j, x in enumerate(A):
+
+        disc_intersections += current * open_disc[j] + (open_disc[j] * (open_disc[j] - 1) // 2) # Combinations
+
+        if disc_intersections > 10000000:
+            return -1
+        current += open_disc[j] - close_disc[j]
+    return disc_intersections
+
+
+
+print(solution([1,5,2,1,4,0]))
+
 """
 We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
 
